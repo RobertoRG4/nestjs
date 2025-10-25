@@ -1,7 +1,9 @@
 import { Controller, Get } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { Saludar } from 'src/hello/application/Saludo/Saludar';
 
-@Controller()
+@ApiTags('Hello')
+@Controller('/hello')
 export class HelloController {
   constructor(private readonly saludar: Saludar) {}
 

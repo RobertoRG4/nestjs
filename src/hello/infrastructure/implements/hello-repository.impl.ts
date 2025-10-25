@@ -5,6 +5,6 @@ import { Saludo } from 'src/hello/domain/types/Saludo';
 @Injectable()
 export class HelloRepositoryImpl implements HelloRepository {
   hello(): Saludo {
-    return new Saludo('hello wordl');
+    return new Saludo('hello world');
   }
 }

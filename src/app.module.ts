@@ -8,7 +8,7 @@ import { HELLO_REPOSITORY } from './hello/infrastructure/constants';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: `.env.${process.env.NODE_ENV || 'dev'}`,
+      envFilePath: `.env.${process.env.NODE_ENV || 'development'}`,
       isGlobal: true,
     }),
   ],
