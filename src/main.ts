@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ResponseInterceptor } from './common/interceptors/response.interceptor';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,8 +12,8 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
 
-  app.setGlobalPrefix(`${prefix}/api/v1/`);
-  app.useGlobalInterceptors(new ResponseInterceptor());
+  app.setGlobalPrefix(prefix);
+  app.useGlobalPipes(new ValidationPipe());
 
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup(`${prefix}/api/v1/swagger-ui/`, app, documentFactory);
